@@ -8,7 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.management.base import BaseCommand, CommandError
 import requests
 
-from geniza.corpus.models import Library, LanguageScript
+from geniza.corpus.models import Library, LanguageScript, DocumentType
 
 
 class Command(BaseCommand):
@@ -86,3 +86,18 @@ class Command(BaseCommand):
                 object_repr=str(lang),
                 change_message=self.logentry_message,
                 action_flag=ADDITION)
+
+    # def flatten_delimited_list(l):
+    #     return set([x.strip() for l in m for x in l.split(';')])
+
+    # def import_doctypes(self):
+    #     language_content_type = ContentType.objects.get_for_model(LanguageScript)
+
+    #     DocumentType.objects.all().delete()
+    #     metadata = self.get_csv('metadata')
+    #     unique_doctypes = set([doctype.strip() for doctype in row['Type'].split(';') for row in metadata])
+    #     print(unique_doctypes)
+    #     doctypes = DocumentType.objects.bulk_create([
+    #         DocumentType(name=doctype) for doctype in unique_doctypes
+    #     ])
+
